@@ -44,6 +44,28 @@ public class Model {
 		
 	}
 	
+	public int nVertici() {
+		return this.grafo.vertexSet().size();
+	}
+	
+	public int nArchi() {
+		return this.grafo.edgeSet().size();
+	}
+	
+	public List<Adiacenza> getArchi(){
+		List<Adiacenza> archi = new ArrayList<Adiacenza>();
+		for (DefaultWeightedEdge e : this.grafo.edgeSet()) {
+			archi.add(new Adiacenza(this.grafo.getEdgeSource(e),
+						this.grafo.getEdgeTarget(e), 
+						(int) this.grafo.getEdgeWeight(e)));
+		}
+		return archi;
+	}
+	
+	public List<String> getCategorie(){
+		return this.dao.getCategorie();
+	}
+	
 	// PUNTO D
 	
 	public List<Adiacenza> getArchiMaggioriPesoMedio() {
@@ -66,6 +88,7 @@ public class Model {
 		}
 		return result;	
 	}
+	
 	
 	// PUNTO 2
 	// Ricorsione 
